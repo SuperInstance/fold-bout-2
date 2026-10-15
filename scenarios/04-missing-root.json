@@ -1,0 +1,14 @@
+{
+  "name": "missing-root",
+  "description": "The closure root cannot be computed (incomplete closure). The port returns MISMATCH, root=null, and explains the closure is incomplete.",
+  "input": [
+    {"id": "genesis", "kind": "task", "parents": [], "effects": {"project": "bench"}},
+    {"id": "task-a", "kind": "task", "parents": ["genesis"], "effects": {"x": 1}},
+    {"id": "task-b", "kind": "task", "parents": ["missing"], "effects": {"y": 2}}
+  ],
+  "at": "task-b",
+  "pinned_root": "any-non-null-value",
+  "expected_verdict": "MISMATCH",
+  "expected_root": null,
+  "expected_incomplete_closure": true
+}

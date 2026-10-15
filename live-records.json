@@ -1,0 +1,109 @@
+[
+  {
+    "id": "genesis",
+    "repo": "poc-quilt-1",
+    "kind": "task",
+    "parents": [],
+    "effects": {
+      "project": "poc-quilt-1",
+      "status": "open"
+    },
+    "orphan": false,
+    "recordsBehind": null
+  },
+  {
+    "id": "task-a",
+    "repo": "poc-quilt-1--task-a",
+    "kind": "task",
+    "parents": [
+      "genesis"
+    ],
+    "effects": {
+      "config.timeout": 30,
+      "feature.cache": "on"
+    },
+    "orphan": false,
+    "recordsBehind": null
+  },
+  {
+    "id": "task-b",
+    "repo": "poc-quilt-1--task-b",
+    "kind": "task",
+    "parents": [
+      "genesis"
+    ],
+    "effects": {
+      "config.timeout": 60,
+      "feature.search": "on"
+    },
+    "orphan": false,
+    "recordsBehind": null
+  },
+  {
+    "id": "override-1",
+    "repo": "poc-quilt-1",
+    "kind": "override",
+    "parents": [
+      "task-a",
+      "task-b"
+    ],
+    "effects": {
+      "config.timeout": 45
+    },
+    "reason": "captain: 45 is the safe value",
+    "orphan": false,
+    "recordsBehind": null
+  },
+  {
+    "id": "task-c",
+    "repo": "poc-quilt-1--task-c",
+    "kind": "task",
+    "parents": [
+      "override-1"
+    ],
+    "effects": {
+      "feature.inherited": true
+    },
+    "orphan": false,
+    "recordsBehind": null
+  },
+  {
+    "id": "task-d",
+    "repo": "poc-quilt-1--task-d",
+    "kind": "task",
+    "parents": [
+      "task-b"
+    ],
+    "effects": {
+      "config.timeout": 99
+    },
+    "orphan": false,
+    "recordsBehind": null
+  },
+  {
+    "id": "witness-1",
+    "repo": "poc-quilt-1",
+    "kind": "witness",
+    "parents": [
+      "genesis"
+    ],
+    "effects": {
+      "env.oracle_disk_pct": 93
+    },
+    "orphan": false,
+    "recordsBehind": 6
+  },
+  {
+    "id": "witness-2",
+    "repo": "poc-quilt-1--task-e",
+    "kind": "witness",
+    "parents": [
+      "override-1"
+    ],
+    "effects": {
+      "env.oracle_load1_x100": 17
+    },
+    "orphan": false,
+    "recordsBehind": 3
+  }
+]

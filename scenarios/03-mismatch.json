@@ -1,0 +1,19 @@
+{
+  "name": "MISMATCH",
+  "description": "The closure root differs from the pinned value. The port returns MISMATCH, includes both roots, and does not attempt to repair.",
+  "input_tampered": [
+    {"id": "genesis", "kind": "task", "parents": [], "effects": {"project": "poc-quilt-1", "status": "open"}},
+    {"id": "task-a", "kind": "task", "parents": ["genesis"], "effects": {"config.timeout": 30, "feature.cache": "on"}},
+    {"id": "task-b", "kind": "task", "parents": ["genesis"], "effects": {"config.timeout": 60, "feature.search": "on"}},
+    {"id": "override-1", "kind": "override", "parents": ["task-a", "task-b"], "effects": {"config.timeout": 45}, "reason": "tampered"},
+    {"id": "task-c", "kind": "task", "parents": ["override-1"], "effects": {"feature.inherited": true}},
+    {"id": "task-d", "kind": "task", "parents": ["task-b"], "effects": {"config.timeout": 99}},
+    {"id": "witness-1", "kind": "witness", "parents": ["genesis"], "effects": {"env.oracle_disk_pct": 93}},
+    {"id": "witness-2", "kind": "witness", "parents": ["override-1"], "effects": {"env.oracle_load1_x100": 17}}
+  ],
+  "at": "task-c",
+  "pinned_root": "60effe23970d8a5cc837636c44685502361288c1f00577e9addfa10cbd4fc91d",
+  "expected_verdict": "MISMATCH",
+  "expected_root_match": false,
+  "expected_root_in_payload": true
+}

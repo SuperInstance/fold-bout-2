@@ -1,0 +1,12 @@
+{
+  "name": "STATE-ONLY",
+  "description": "The closure root matches, but the requested state subset does not. The port returns STATE-ONLY (the state differs but the root doesn't; the captain can see both).",
+  "input_source": "https://gitpp.superinstance.dev/api/records?project=poc-quilt-1",
+  "at": "task-c",
+  "pinned_root": "60effe23970d8a5cc837636c44685502361288c1f00577e9addfa10cbd4fc91d",
+  "tamper_state_subset": {
+    "config.timeout": 999
+  },
+  "expected_verdict": "STATE-ONLY",
+  "expected_root_match": true
+}

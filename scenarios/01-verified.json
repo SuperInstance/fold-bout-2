@@ -1,0 +1,12 @@
+{
+  "name": "VERIFIED",
+  "description": "The closure root matches the pinned value exactly. The port returns verdict=VERIFIED and the live state.",
+  "input_source": "https://gitpp.superinstance.dev/api/records?project=poc-quilt-1",
+  "at": "task-c",
+  "pinned_root": "60effe23970d8a5cc837636c44685502361288c1f00577e9addfa10cbd4fc91d",
+  "expected_verdict": "VERIFIED",
+  "expected_state_subset": {
+    "config.timeout": 45,
+    "feature.cache": "on"
+  }
+}
